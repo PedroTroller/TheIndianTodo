@@ -1,0 +1,42 @@
+app_tasks_index:
+    path: /
+    defaults:
+        _controller: "AppBundle:Tasks:index"
+    requirements:
+        method: GET
+
+app_tasks_create:
+    path: /new
+    defaults:
+        _controller: "AppBundle:Tasks:create"
+    requirements:
+        method: GET|POST
+
+app_tasks_simple_create:
+    path: /simple/new
+    defaults:
+        _controller: "AppBundle:Tasks:create"
+        type: task
+    requirements:
+        method: GET|POST
+
+app_tasks_update:
+    path: /{task}
+    defaults:
+        _controller: "AppBundle:Tasks:update"
+    requirements:
+        method: GET|PUT
+
+app_tasks_delete:
+    path: /{task}/delete
+    defaults:
+        _controller: "AppBundle:Tasks:delete"
+    requirements:
+        method: GET
+
+app_tasks_person_delete:
+    path: /{task}/persons/{person}/delete
+    defaults:
+        _controller: "AppBundle:Tasks:deletePerson"
+    requirements:
+        method: GET

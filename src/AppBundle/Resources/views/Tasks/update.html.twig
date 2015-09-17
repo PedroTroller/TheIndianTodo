@@ -1,0 +1,17 @@
+{% extends 'AppBundle::base.html.twig' %}
+
+{% block content %}
+    {{ form_start(form, { attr: { novalidate: true }}) }}
+    {{ form_widget(form) }}
+
+    <div class="row">
+        <div class="col-md-6">
+            <input type="submit" class="btn btn-success btn-block btn-lg" value="Update" />
+        </div>
+        <div class="col-md-6">
+            <input type="reset" class="btn btn-danger btn-block btn-lg" value="Cancel" />
+        </div>
+    </div>
+
+    {{ form_end(form) }}
+{% endblock content %}

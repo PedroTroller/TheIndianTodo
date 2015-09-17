@@ -1,0 +1,6 @@
+app:
+    resource: "@AppBundle/Resources/config/routing.yml"
+
+acme_flow:
+    resource: @SyliusFlowBundle/Resources/config/routing.yml
+    prefix: /work

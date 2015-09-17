@@ -1,0 +1,41 @@
+{% extends 'AppBundle::base.html.twig' %}
+
+{% block content %}
+<ul class="nav nav-tabs">
+    {% set accessible = true %}
+    {% for step in context.process.steps %}
+        {% if step != context.currentStep %}
+            {% if true == accessible %}
+                <li role="presentation">
+                    <a href="{{ path('sylius_flow_display', { scenarioAlias: context.process.scenarioAlias, stepName: step.name}) }}">
+                        {{ step.name|upper }}
+                    </a>
+                </li>
+            {% else %}
+                <li role="presentation" class="disabled">
+                    <a>
+                        {{ step.name|upper }}
+                    </a>
+                </li>
+            {% endif %}
+        {% else %}
+            <li role="presentation" class="active">
+                <a>
+                    {{ step.name|upper }}
+                </a>
+            </li>
+            {% set accessible = false %}
+        {% endif %}
+    {% endfor %}
+</ul>
+<div class="progress">
+    <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar" aria-valuenow="{{ context.progress }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ context.progress }}%">
+    </div>
+</div>
+{% block form %}
+    {{ form_start(form, { attr: { novalidate: true }}) }}
+    {{ form_widget(form) }}
+    <input type="submit" class="btn btn-lg btn-success btn-block">
+    {{ form_end(form) }}
+{% endblock form %}
+{% endblock content %}

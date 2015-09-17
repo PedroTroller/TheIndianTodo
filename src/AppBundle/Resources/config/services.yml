@@ -1,0 +1,70 @@
+services:
+    app.doctrine.naming_strategy.todo_strategy:
+        class: AppBundle\Doctrine\NamingStrategy\TodoStrategy
+
+    app.event_listener.task_notification_listener:
+        class: AppBundle\EventListener\TaskNotificationListener
+        tags:
+            - { name: kernel.event_subscriber }
+
+    app.event_listener.timestampable_listener:
+        class: AppBundle\EventListener\TimestampableListener
+        tags:
+            - { name: doctrine.event_listener, event: prePersist }
+            - { name: doctrine.event_listener, event: preUpdate }
+
+    app.form.type.advanced_task_type:
+        class: AppBundle\Form\Type\AdvancedTaskType
+        tags:
+            - { name: form.type, alias: advanced_task }
+
+    app.form.type.person_type:
+        class: AppBundle\Form\Type\PersonType
+        tags:
+            - { name: form.type, alias: person }
+
+    app.form.type.task_creator_type:
+        class: AppBundle\Form\Type\TaskCreatorType
+        tags:
+            - { name: form.type, alias: task_creator }
+
+    app.form.type.task_description_type:
+        class: AppBundle\Form\Type\TaskDescriptionType
+        tags:
+            - { name: form.type, alias: task_description }
+
+    app.form.type.task_title_type:
+        class: AppBundle\Form\Type\TaskTitleType
+        tags:
+            - { name: form.type, alias: task_title }
+
+    app.form.type.task_persons_email_type:
+        class: AppBundle\Form\Type\TaskPersonsEmailType
+        tags:
+            - { name: form.type, alias: task_persons_email }
+
+    app.form.type.persons_email_type:
+        class: AppBundle\Form\Type\PersonsEmailType
+        tags:
+            - { name: form.type, alias: persons_email }
+
+    app.form.type.task_persons:
+        class: AppBundle\Form\Type\TaskPersonsType
+        tags:
+            - { name: form.type, alias: task_persons }
+
+    app.form.type.task_type:
+        class: AppBundle\Form\Type\TaskType
+        tags:
+            - { name: form.type, alias: task }
+
+    app.workflow.task_scenario:
+        class: AppBundle\Workflow\TaskScenario
+        tags:
+            - { name: sylius.process.scenario, alias: task }
+
+    app.workflow.task_edition_scenario:
+        class: AppBundle\Workflow\TaskEditionScenario
+        tags:
+            - { name: sylius.process.scenario, alias: task-edition }
+

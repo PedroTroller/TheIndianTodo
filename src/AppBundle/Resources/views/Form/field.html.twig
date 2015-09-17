@@ -1,0 +1,26 @@
+{% extends 'bootstrap_3_layout.html.twig' %}
+
+{% block email_widget %}
+<div class="input-group">
+    <div class="input-group-addon">@</div>
+    {{ form_widget(form, { attr: { class: 'form-control' }} ) }}
+</div>
+{% endblock email_widget %}
+
+{% block _advanced_task_persons_entry_row %}
+    <div class="row" id="{{ form.vars.id }}">
+        <div class="col-md-11">
+            {{ form_widget(form) }}
+        </div>
+        <div class="col-md-1" style="padding-top: 31px;">
+            <a href="#" class="glyphicon glyphicon-trash" data-remove="{{ form.vars.id }}"></a>
+        </div>
+    </div>
+{% endblock _advanced_task_persons_entry_row %}
+
+{% block _advanced_task_persons_widget %}
+    <a data-add="{{ form.vars.id }}" href="#" class="glyphicon glyphicon-plus"></a>
+    {%- set attr = attr|merge({'data-prototype': form_row(prototype) }) -%}
+    {%- set attr = attr|merge({'data-children': form.children|length }) -%}
+    {{- block('form_widget') -}}
+{% endblock _advanced_task_persons_widget %}

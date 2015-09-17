@@ -1,0 +1,20 @@
+{% extends 'AppBundle:Tasks/Step:base.html.twig' %}
+
+{% block form %}
+    The following task will be created : 
+    <hr />
+
+    <div class="row">
+        <div class="col-md-2"><b>Title</b></div>
+        <div class="col-md-10">{{ task.title }}</div>
+        <div class="col-md-2"><b>Description</b></div>
+        <div class="col-md-10">{{ task.description }}</div>
+    </div>
+
+    <a 
+        href="{{ path('sylius_flow_forward', { scenarioAlias: context.process.scenarioAlias, stepName: context.currentStep.name}) }}" 
+        class="btn btn-success btn-lg btn-block"
+    >
+        Create this task
+    </a>
+{% endblock form %}
